@@ -12,12 +12,12 @@ phases:
     commands: #https://learning.getpostman.com/docs/postman/collection-runs/command-line-integration-with-newman/
       - npm install -g newman
       - yum install -y jq
+      - pip install --upgrade awscli
 
   pre_build:
     commands:
       - echo MVN Clean started on `date` from dir `pwd`
-      - cd ..
-      - mvn -f pom.xml clean
+      - mvn clean
       - aws s3 cp "s3://${S3_BUCKET}/postman-env-files/PetStoreAPIEnvironment.postman_environment.json" ./02postman/
       - aws s3 cp "s3://${S3_BUCKET}/postman-env-files/PetStoreAPI.postman_collection.json" ./02postman/
       - cd ./02postman
@@ -27,7 +27,7 @@ phases:
     commands:
       - echo Build started on `date` from dir `pwd`
       - cd ..
-      - mvn -f pom.xml package assembly:single
+      - mvn package assembly:single
       - newman run PetStoreAPI.postman_collection.json --environment PetStoreAPIEnvironment.postman_environment.json -r junit
       - echo Build completed on `date`
 
