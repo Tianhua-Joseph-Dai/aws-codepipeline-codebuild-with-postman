@@ -20,12 +20,13 @@ phases:
         - mvn package assembly:single
         - echo Build completed on `date` from dir `pwd`
 artifacts:
-  type: zip
   files:
-    - 01api/petstore-api-output.yaml
+    - local-groupon-web-service-1.1-jar-with-dependencies.jar
+    discard-paths: yes
+    base-directory: target
   secondary-artifacts:
     artifactIdentifier:
+      type: zip
       files:
-        - local-groupon-web-service-1.1-jar-with-dependencies.jar
-        discard-paths: yes
-        base-directory: target
+        - 01api/petstore-api-output.yaml
+
