@@ -33,4 +33,3 @@ artifacts:
       files:
         - 01api/petstore-api-output.yaml
       discard-paths: yes
-
