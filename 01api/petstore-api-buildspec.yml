@@ -24,7 +24,8 @@ phases:
 
 artifacts:
   files:
-    - local-groupon-web-service-1.1-jar-with-dependencies.jar
+    - |
+      local-groupon-web-service-1.1-jar-with-dependencies.jar
     discard-paths: yes
     base-directory: target
   secondary-artifacts:
