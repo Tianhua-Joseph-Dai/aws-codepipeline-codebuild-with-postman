@@ -27,6 +27,5 @@ artifacts:
     artifactIdentifier:
       files:
         - local-groupon-web-service-1.1-jar-with-dependencies.jar
-        #name: $(date +%Y-%m-%d)
         discard-paths: yes
         base-directory: target
