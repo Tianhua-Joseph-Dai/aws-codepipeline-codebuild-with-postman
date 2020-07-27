@@ -175,7 +175,7 @@ Resources:
         Value:
           Fn::Sub: ${AWS::StackName}-codepipeline-artifact-bucket
 
-  #code build - api deployment using SAM (see buildspec.yml)
+  #code build - api deployment using SAM (see petstore-api-buildspec.yml)
   PetStoreAPISAMCodeBuildProject:
     Type: AWS::CodeBuild::Project
     Properties:
@@ -208,7 +208,7 @@ Resources:
         Value:
           Fn::Sub: ${AWS::StackName}-petstore-api-stack-project
 
-  #code build - api testing using Newman to execute Postman test def (see buildspec.yml)
+  #code build - api testing using Newman to execute Postman test def (see petstore-api-buildspec.yml)
   PostmanNewmanCodeBuildProject:
     Type: AWS::CodeBuild::Project
     Properties:
