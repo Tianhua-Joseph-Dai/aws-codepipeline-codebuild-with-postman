@@ -16,7 +16,7 @@ phases:
   pre_build:
     commands:
       - echo MVN Clean started on `date` from dir `pwd`
-      - mvn clean
+      - mvn -f 03codebuild/pom.xml clean
       - aws s3 cp "s3://${S3_BUCKET}/postman-env-files/PetStoreAPIEnvironment.postman_environment.json" ./02postman/
       - aws s3 cp "s3://${S3_BUCKET}/postman-env-files/PetStoreAPI.postman_collection.json" ./02postman/
       - cd ./02postman
@@ -25,7 +25,7 @@ phases:
   build:
     commands:
       - echo Build started on `date` from dir `pwd`
-      - mvn package assembly:single
+      - mvn -f 03codebuild/pom.xml package assembly:single
       - newman run PetStoreAPI.postman_collection.json --environment PetStoreAPIEnvironment.postman_environment.json -r junit
       - echo Build completed on `date`
 

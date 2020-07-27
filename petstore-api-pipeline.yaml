@@ -240,7 +240,7 @@ Resources:
             - '/'
             - !Ref GitHubRepositoryName
         Type:  GITHUB
-        BuildSpec: 03codebuild/postman-newman-buildspec.yml
+        BuildSpec: postman-newman-buildspec.yml
       TimeoutInMinutes: 10
       Tags:
         - Key: Name
