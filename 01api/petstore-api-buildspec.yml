@@ -3,6 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
+      - add-apt-repository ppa:openjdk-r/ppa -y
       - apt-get update -y
       - apt install -y openjdk-11-jdk
       - apt-get install -y maven
