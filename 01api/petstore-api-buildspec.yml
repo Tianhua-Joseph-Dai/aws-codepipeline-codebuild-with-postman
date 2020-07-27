@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  variables:
+    JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
+
 phases:
   install:
     runtime-versions:
