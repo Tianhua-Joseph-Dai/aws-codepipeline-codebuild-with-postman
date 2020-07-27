@@ -1,13 +1,10 @@
 version: 0.2
 
-env:
-  variables:
-    JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
-
 phases:
   install:
     commands:
       - apt-get update -y
+      - apt-get install -y openjdk-11-jdk
       - apt-get install -y maven
       - pip install --upgrade awscli
       - cd 01api
