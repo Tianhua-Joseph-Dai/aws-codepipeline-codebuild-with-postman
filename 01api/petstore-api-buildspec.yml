@@ -1,13 +1,31 @@
 version: 0.2
 phases:
   install:
+    runtime-versions:
+      java: corretto11
     commands:
+      - pip install --upgrade awscli
       - cd 01api
       - aws cloudformation package --template-file petstore-api.yaml
                                    --s3-bucket bucketforpostmantesting
                                    --s3-prefix api-code
                                    --output-template-file petstore-api-output.yaml
+    pre_build:
+      commands:
+        - echo MVN Clean started on `date` from dir `pwd`
+        - mvn clean
+    build:
+      commands:
+        - echo MVN accembly started on `date` from dir `pwd`
+        - mvn package assembly:single
+        - echo Build completed on `date` from dir `pwd`
 artifacts:
-  type: zip
   files:
-    - 01api/petstore-api-output.yaml
+    - local-groupon-web-service-1.1-jar-with-dependencies.jar
+  #name: $(date +%Y-%m-%d)
+  discard-paths: yes
+  base-directory: target
+  secondary-artifacts:
+    type: zip
+    files:
+      - 01api/petstore-api-output.yaml
