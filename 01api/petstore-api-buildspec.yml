@@ -6,6 +6,8 @@ phases:
       java: corretto11
     commands:
       # Upgrade AWS CLI to the latest version
+      - apt-get update -y
+      - apt-get install -y maven
       - pip install --upgrade awscli
       - cd 01api
       - aws cloudformation package --template-file petstore-api.yaml --s3-bucket bucketforpostmantesting --s3-prefix api-code --output-template-file petstore-api-output.yaml
